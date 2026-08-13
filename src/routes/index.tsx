@@ -4,17 +4,19 @@ import zineTexture from "@/assets/zine-texture.jpg";
 import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
+import { ContactForm } from "@/components/ContactForm";
+import { useParallax } from "@/hooks/use-parallax";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "DOOMSCROLL — Concept Art, Marketing & Editing Studio" },
+      { title: "FEEDWALKERS — Concept Art, Marketing & Editing Studio" },
       {
         name: "description",
         content:
-          "DOOMSCROLL is a concept-art marketing, design and editing agency making meme-fluent campaigns for brands that want Gen Z to actually care.",
+          "FEEDWALKERS is a concept-art marketing, design and editing agency making meme-fluent campaigns for brands that want Gen Z to actually care.",
       },
-      { property: "og:title", content: "DOOMSCROLL — Concept Art & Meme-Fluent Marketing" },
+      { property: "og:title", content: "FEEDWALKERS — Concept Art & Meme-Fluent Marketing" },
       {
         property: "og:description",
         content:
@@ -66,11 +68,20 @@ const work = [
 ];
 
 function Index() {
+  const heroRef = useParallax<HTMLImageElement>(0.12);
+  const zineRef = useParallax<HTMLImageElement>(0.1);
+  const workRefs = [
+    useParallax<HTMLDivElement>(0.06),
+    useParallax<HTMLDivElement>(0.14),
+    useParallax<HTMLDivElement>(0.09),
+  ];
+  const contactBlobRef = useParallax<HTMLDivElement>(0.25);
+
   return (
     <div className="min-h-screen bg-background text-foreground grain-overlay">
-      <header className="sticky top-0 z-50 border-b-2 border-ink bg-background/90 backdrop-blur">
+      <header className="glass-panel sticky top-0 z-50 border-b-2 border-ink">
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-3">
-          <span className="font-display text-2xl tracking-tight">DOOMSCROLL™</span>
+          <span className="font-poster text-2xl tracking-tight">FEEDWALKERS™</span>
           <nav className="hidden gap-6 font-mono text-xs uppercase md:flex">
             <a href="#work" className="hover:text-shock">
               work
@@ -91,14 +102,14 @@ function Index() {
         </div>
       </header>
 
-      <section className="border-b-2 border-ink px-5 pt-10 pb-6">
+      <section className="overflow-hidden border-b-2 border-ink px-5 pt-10 pb-6">
         <div className="mx-auto max-w-[1500px]">
-          <p className="font-mono text-xs uppercase text-muted-foreground">
+          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
             est. terminally online — marketing / design / editing
           </p>
           <div className="mt-4 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-              <h1 className="text-[clamp(3.5rem,13vw,11rem)]">
+              <h1 className="font-poster text-[clamp(3.5rem,13vw,11rem)]">
                 WE MAKE
                 <br />
                 <span className="outline-type">BRANDS</span>
@@ -116,15 +127,22 @@ function Index() {
                 >
                   See the damage
                 </a>
+                <a
+                  href="#contact"
+                  className="glass-chip border-2 border-ink px-6 py-3 font-display text-xl uppercase"
+                >
+                  Send a brief
+                </a>
               </div>
             </div>
             <figure className="relative">
               <img
+                ref={heroRef}
                 src={heroCollage}
                 alt="Chrome and halftone concept art collage in acid green and hot pink"
                 width={1280}
                 height={1280}
-                className="hard-shadow-acid w-full border-2 border-ink object-cover"
+                className="hard-shadow-acid w-full border-2 border-ink object-cover will-change-transform"
               />
               <figcaption className="mt-2 font-mono text-[10px] uppercase text-muted-foreground">
                 fig. 01 — internal moodboard, leaked on purpose
@@ -139,7 +157,7 @@ function Index() {
           {[...marqueeWords, ...marqueeWords].map((w, i) => (
             <span
               key={i}
-              className="px-5 font-display text-3xl uppercase text-background md:text-5xl"
+              className="px-5 font-poster text-3xl uppercase text-background md:text-5xl"
             >
               {w}
             </span>
@@ -154,7 +172,7 @@ function Index() {
             {services.map((s, i) => (
               <article
                 key={s.n}
-                className={`p-7 ${i < 2 ? "border-b-2 border-ink md:border-b-0 md:border-r-2" : ""}`}
+                className={`glass-chip p-7 ${i < 2 ? "border-b-2 border-ink md:border-b-0 md:border-r-2" : ""}`}
               >
                 <span className="font-mono text-xs text-shock">{s.n}</span>
                 <h3 className="mt-3 text-5xl">{s.title}</h3>
@@ -175,7 +193,7 @@ function Index() {
         </div>
       </section>
 
-      <section id="work" className="border-b-2 border-ink px-5 py-16">
+      <section id="work" className="overflow-hidden border-b-2 border-ink px-5 py-16">
         <div className="mx-auto max-w-[1500px]">
           <div className="flex flex-wrap items-end justify-between gap-4">
             <h2 className="text-[clamp(2.5rem,7vw,6rem)]">Selected chaos</h2>
@@ -183,38 +201,43 @@ function Index() {
           </div>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {work.map((w, i) => (
-              <article key={w.title} className={i === 1 ? "md:mt-16" : ""}>
-                <img
-                  src={w.img}
-                  alt={`${w.title} concept art for ${w.client}`}
-                  loading="lazy"
-                  width={900}
-                  height={1100}
-                  className="w-full border-2 border-ink object-cover"
-                />
-                <div className="mt-3 flex items-baseline justify-between gap-3">
-                  <h3 className="text-3xl">{w.title}</h3>
-                  <span className="font-mono text-[10px] uppercase text-muted-foreground">
-                    {w.tag}
-                  </span>
-                </div>
-                <p className="font-serif text-xl italic">{w.client}</p>
-              </article>
+              <div key={w.title} ref={workRefs[i]} className="will-change-transform">
+                <article className={i === 1 ? "md:mt-16" : ""}>
+                  <img
+                    src={w.img}
+                    alt={`${w.title} concept art for ${w.client}`}
+                    loading="lazy"
+                    width={900}
+                    height={1100}
+                    className="w-full border-2 border-ink object-cover"
+                  />
+                  <div className="mt-3 flex items-baseline justify-between gap-3">
+                    <h3 className="text-3xl">{w.title}</h3>
+                    <span className="font-mono text-[10px] uppercase text-muted-foreground">
+                      {w.tag}
+                    </span>
+                  </div>
+                  <p className="font-serif text-xl italic">{w.client}</p>
+                </article>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="lore" className="border-b-2 border-ink px-5 py-16">
+      <section id="lore" className="overflow-hidden border-b-2 border-ink px-5 py-16">
         <div className="mx-auto grid max-w-[1500px] gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-          <img
-            src={zineTexture}
-            alt="Acid green zine collage with pink smiley stickers and tape"
-            loading="lazy"
-            width={1024}
-            height={768}
-            className="hard-shadow h-full w-full border-2 border-ink object-cover"
-          />
+          <div className="overflow-hidden border-2 border-ink">
+            <img
+              ref={zineRef}
+              src={zineTexture}
+              alt="Acid green zine collage with pink smiley stickers and tape"
+              loading="lazy"
+              width={1024}
+              height={768}
+              className="h-full w-full scale-110 object-cover will-change-transform"
+            />
+          </div>
           <div>
             <h2 className="text-[clamp(2.2rem,5.5vw,4.5rem)]">
               We speak fluent <span className="font-serif italic normal-case">irony</span>
@@ -231,7 +254,7 @@ function Index() {
                 ["24h", "meme turnaround"],
               ].map(([k, v]) => (
                 <div key={v} className="bg-background p-4">
-                  <dt className="font-display text-4xl">{k}</dt>
+                  <dt className="font-poster text-4xl">{k}</dt>
                   <dd className="font-mono text-[10px] uppercase text-muted-foreground">{v}</dd>
                 </div>
               ))}
@@ -240,21 +263,43 @@ function Index() {
         </div>
       </section>
 
-      <section id="contact" className="bg-ink px-5 py-20 text-background">
-        <div className="mx-auto max-w-[1500px]">
-          <h2 className="text-[clamp(3rem,11vw,9rem)] text-background">
+      <section id="contact" className="relative overflow-hidden bg-ink px-5 py-20 text-background">
+        <div
+          ref={contactBlobRef}
+          aria-hidden
+          className="pointer-events-none absolute -left-24 top-10 h-96 w-96 rounded-full bg-shock/40 blur-3xl will-change-transform"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-acid/30 blur-3xl"
+        />
+        <div className="relative mx-auto max-w-[1500px]">
+          <h2 className="font-poster text-[clamp(3rem,11vw,9rem)] text-background">
             got a brief?
             <br />
             <span className="text-acid">post it to us</span>
           </h2>
-          <a
-            href="mailto:hi@doomscroll.studio"
-            className="mt-8 inline-block border-2 border-acid bg-shock px-8 py-4 font-display text-2xl uppercase text-background"
-          >
-            hi@doomscroll.studio
-          </a>
-          <p className="mt-10 font-mono text-[10px] uppercase opacity-60">
-            © 2026 doomscroll studio — no cringe, ever
+
+          <div className="mt-12 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <p className="max-w-sm text-lg leading-snug opacity-80">
+                Fill it in, drop your deck, and we'll come back with a plan, a price in rupees, and
+                at least one idea your legal team will question.
+              </p>
+              <a
+                href="mailto:hi@feedwalkers.studio"
+                className="mt-8 inline-block border-2 border-acid bg-shock px-6 py-3 font-display text-xl uppercase text-background"
+              >
+                hi@feedwalkers.studio
+              </a>
+            </div>
+            <div className="text-foreground">
+              <ContactForm />
+            </div>
+          </div>
+
+          <p className="mt-14 font-mono text-[10px] uppercase opacity-60">
+            © 2026 feedwalkers studio — no cringe, ever
           </p>
         </div>
       </section>

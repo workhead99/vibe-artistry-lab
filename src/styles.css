@@ -148,14 +148,26 @@
 }
 
 @theme inline {
-  --font-display: "Anton", ui-sans-serif, sans-serif;
-  --font-body: "Space Grotesk", ui-sans-serif, sans-serif;
-  --font-mono: "Space Mono", ui-monospace, monospace;
+  --font-display: "Bricolage Grotesque", "Anton", ui-sans-serif, sans-serif;
+  --font-poster: "Anton", ui-sans-serif, sans-serif;
+  --font-body: "Satoshi", "General Sans", "Space Grotesk", ui-sans-serif, sans-serif;
+  --font-mono: "JetBrains Mono", "Space Mono", ui-monospace, monospace;
   --font-serif: "Instrument Serif", ui-serif, serif;
   --color-ink: var(--ink);
   --color-acid: var(--acid);
   --color-shock: var(--shock);
 }
+
+@utility glass-panel {
+  background: color-mix(in oklab, var(--background) 45%, transparent);
+  backdrop-filter: blur(18px) saturate(150%);
+}
+
+@utility glass-chip {
+  background: color-mix(in oklab, var(--background) 35%, transparent);
+  backdrop-filter: blur(12px) saturate(140%);
+}
+
 
 @utility marquee-track {
   display: inline-flex;
@@ -197,11 +209,14 @@
 @layer base {
   body {
     font-family: var(--font-body);
+    letter-spacing: -0.01em;
   }
   h1, h2, h3 {
     font-family: var(--font-display);
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: -0.02em;
-    line-height: 0.85;
+    letter-spacing: -0.035em;
+    line-height: 0.86;
   }
 }
+
