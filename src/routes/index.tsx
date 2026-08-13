@@ -103,7 +103,7 @@ function Index() {
                 <br />
                 <span className="outline-type">BRANDS</span>
                 <br />
-                GO <span className="bg-shock px-2 text-background">FERAL</span>
+                GO <span className="inline-block bg-shock px-3 leading-[0.8] text-background">FERAL</span>
               </h1>
               <p className="mt-6 max-w-lg font-body text-lg leading-snug">
                 A concept-art studio for companies who realised the algorithm doesn't read your
