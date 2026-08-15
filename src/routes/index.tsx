@@ -8,6 +8,8 @@ import { ContactForm } from "@/components/ContactForm";
 import { MemeWall } from "@/components/MemeWall";
 import { AuraCalculator } from "@/components/AuraCalculator";
 import { useParallax } from "@/hooks/use-parallax";
+import { useReveal } from "@/hooks/use-reveal";
+
 
 
 export const Route = createFileRoute("/")({
