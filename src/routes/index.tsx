@@ -5,7 +5,10 @@ import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
 import { ContactForm } from "@/components/ContactForm";
+import { MemeWall } from "@/components/MemeWall";
+import { AuraCalculator } from "@/components/AuraCalculator";
 import { useParallax } from "@/hooks/use-parallax";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -233,6 +236,28 @@ function Index() {
         </div>
       </section>
 
+      <MemeWall />
+
+      <section id="aura" className="overflow-hidden border-b-2 border-ink px-5 py-16">
+        <div className="mx-auto grid max-w-[1500px] gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div>
+            <h2 className="text-[clamp(2.5rem,7vw,6rem)]">
+              What's your <span className="font-serif italic normal-case">aura</span>?
+            </h2>
+            <p className="mt-5 max-w-md text-lg leading-snug">
+              Five questions. One number. It decides whether your feed gets screenshotted or
+              scrolled past. No email required, we're not monsters.
+            </p>
+            <p className="mt-5 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+              scoring model: vibes, peer-reviewed
+            </p>
+          </div>
+          <AuraCalculator />
+        </div>
+      </section>
+
+
+
       <section id="lore" className="overflow-hidden border-b-2 border-ink px-5 py-16">
         <div className="mx-auto grid max-w-[1500px] gap-10 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="overflow-hidden border-2 border-ink">
@@ -295,11 +320,12 @@ function Index() {
                 at least one idea your legal team will question.
               </p>
               <a
-                href="mailto:hi@feedwalkers.studio"
+                href="mailto:yk@feedwalkers.com"
                 className="mt-8 inline-block border-2 border-acid bg-shock px-6 py-3 font-display text-xl uppercase text-background"
               >
-                hi@feedwalkers.studio
+                yk@feedwalkers.com
               </a>
+
             </div>
             <div className="text-foreground">
               <ContactForm />
