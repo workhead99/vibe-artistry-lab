@@ -5,7 +5,10 @@ import work1 from "@/assets/work-1.jpg";
 import work2 from "@/assets/work-2.jpg";
 import work3 from "@/assets/work-3.jpg";
 import { ContactForm } from "@/components/ContactForm";
+import { MemeWall } from "@/components/MemeWall";
+import { AuraCalculator } from "@/components/AuraCalculator";
 import { useParallax } from "@/hooks/use-parallax";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -43,23 +46,30 @@ const marqueeWords = [
 const services = [
   {
     n: "01",
-    title: "Marketing",
+    title: "Signal Ops",
     body: "Campaigns built backwards from the screenshot people send their group chat. Strategy, but make it postable.",
     tags: ["strategy", "paid social", "launches"],
   },
   {
     n: "02",
-    title: "Design",
+    title: "World-Building",
     body: "Identity systems, posters, packaging and web that look like concept art, not like a template someone forgot to rename.",
     tags: ["identity", "posters", "web"],
   },
   {
     n: "03",
-    title: "Editing",
+    title: "Frame Surgery",
     body: "Short-form edits with frame-level timing. Cuts that hit before the thumb does. Captions that carry the joke.",
     tags: ["short form", "motion", "sound"],
   },
+  {
+    n: "04",
+    title: "Meme R&D",
+    body: "A lab for formats, in-jokes and reply-bait. We test the bit before your brand has to say it out loud.",
+    tags: ["formats", "community", "reply-bait"],
+  },
 ];
+
 
 const work = [
   { img: work1, title: "Melted Mascot", client: "Goo Soda", tag: "Identity + Film" },
@@ -86,6 +96,13 @@ function Index() {
             <a href="#work" className="hover:text-shock">
               work
             </a>
+            <a href="#memes" className="hover:text-shock">
+              memes
+            </a>
+            <a href="#aura" className="hover:text-shock">
+              aura
+            </a>
+
             <a href="#services" className="hover:text-shock">
               services
             </a>
@@ -167,13 +184,14 @@ function Index() {
 
       <section id="services" className="border-b-2 border-ink px-5 py-16">
         <div className="mx-auto max-w-[1500px]">
-          <h2 className="text-[clamp(2.5rem,7vw,6rem)]">Three things, done loudly</h2>
-          <div className="mt-10 grid gap-0 border-2 border-ink md:grid-cols-3">
+          <h2 className="text-[clamp(2.5rem,7vw,6rem)]">Four things, done loudly</h2>
+          <div className="mt-10 grid gap-0 border-2 border-ink sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s, i) => (
               <article
                 key={s.n}
-                className={`glass-chip p-7 ${i < 2 ? "border-b-2 border-ink md:border-b-0 md:border-r-2" : ""}`}
+                className={`glass-chip p-7 ${i < 3 ? "border-b-2 border-ink lg:border-b-0 lg:border-r-2" : ""} ${i === 0 ? "sm:border-r-2" : ""} ${i === 2 ? "sm:border-r-2" : ""}`}
               >
+
                 <span className="font-mono text-xs text-shock">{s.n}</span>
                 <h3 className="mt-3 text-5xl">{s.title}</h3>
                 <p className="mt-4 text-base leading-snug text-muted-foreground">{s.body}</p>
@@ -224,6 +242,28 @@ function Index() {
           </div>
         </div>
       </section>
+
+      <MemeWall />
+
+      <section id="aura" className="overflow-hidden border-b-2 border-ink px-5 py-16">
+        <div className="mx-auto grid max-w-[1500px] gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div>
+            <h2 className="text-[clamp(2.5rem,7vw,6rem)]">
+              What's your <span className="font-serif italic normal-case">aura</span>?
+            </h2>
+            <p className="mt-5 max-w-md text-lg leading-snug">
+              Five questions. One number. It decides whether your feed gets screenshotted or
+              scrolled past. No email required, we're not monsters.
+            </p>
+            <p className="mt-5 font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+              scoring model: vibes, peer-reviewed
+            </p>
+          </div>
+          <AuraCalculator />
+        </div>
+      </section>
+
+
 
       <section id="lore" className="overflow-hidden border-b-2 border-ink px-5 py-16">
         <div className="mx-auto grid max-w-[1500px] gap-10 lg:grid-cols-[0.9fr_1.1fr]">
@@ -287,11 +327,12 @@ function Index() {
                 at least one idea your legal team will question.
               </p>
               <a
-                href="mailto:hi@feedwalkers.studio"
+                href="mailto:yk@feedwalkers.com"
                 className="mt-8 inline-block border-2 border-acid bg-shock px-6 py-3 font-display text-xl uppercase text-background"
               >
-                hi@feedwalkers.studio
+                yk@feedwalkers.com
               </a>
+
             </div>
             <div className="text-foreground">
               <ContactForm />

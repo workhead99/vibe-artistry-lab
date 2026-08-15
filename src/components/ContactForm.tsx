@@ -17,13 +17,17 @@ const schema = z.object({
 });
 
 const budgets = [
-  "₹50,000 – ₹1,00,000",
-  "₹1,00,000 – ₹5,00,000",
-  "₹5,00,000 – ₹15,00,000",
-  "₹15,00,000+",
+  "₹1,000",
+  "₹5,000",
+  "₹5,000 – ₹12,500",
+  "₹15,000 – ₹25,000",
+  "₹25,000 – ₹50,000",
+  "₹50,000 – ₹75,000",
+  "₹1,00,000 and above",
 ];
 
-const servicesList = ["Marketing", "Design", "Editing", "All of it"];
+const servicesList = ["Signal Ops", "World-Building", "Frame Surgery", "Meme R&D", "All of it"];
+
 
 const fieldClass =
   "w-full border-2 border-ink bg-background/60 px-4 py-3 font-mono text-sm text-foreground backdrop-blur-md outline-none placeholder:text-muted-foreground focus:border-shock focus:bg-background/80";
