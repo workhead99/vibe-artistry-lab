@@ -43,23 +43,30 @@ const marqueeWords = [
 const services = [
   {
     n: "01",
-    title: "Marketing",
+    title: "Signal Ops",
     body: "Campaigns built backwards from the screenshot people send their group chat. Strategy, but make it postable.",
     tags: ["strategy", "paid social", "launches"],
   },
   {
     n: "02",
-    title: "Design",
+    title: "World-Building",
     body: "Identity systems, posters, packaging and web that look like concept art, not like a template someone forgot to rename.",
     tags: ["identity", "posters", "web"],
   },
   {
     n: "03",
-    title: "Editing",
+    title: "Frame Surgery",
     body: "Short-form edits with frame-level timing. Cuts that hit before the thumb does. Captions that carry the joke.",
     tags: ["short form", "motion", "sound"],
   },
+  {
+    n: "04",
+    title: "Meme R&D",
+    body: "A lab for formats, in-jokes and reply-bait. We test the bit before your brand has to say it out loud.",
+    tags: ["formats", "community", "reply-bait"],
+  },
 ];
+
 
 const work = [
   { img: work1, title: "Melted Mascot", client: "Goo Soda", tag: "Identity + Film" },
