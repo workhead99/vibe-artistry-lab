@@ -324,7 +324,7 @@ function Index() {
         <div
           ref={auraBlobRef}
           aria-hidden
-          className="drift-x pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-acid/30 blur-3xl will-change-transform"
+          className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-acid/30 blur-3xl will-change-transform"
 
         />
         <div className="relative mx-auto max-w-[1500px]">
