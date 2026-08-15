@@ -126,13 +126,17 @@ function Index() {
           </p>
           <div className="mt-4 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-              <h1 className="font-poster text-[clamp(3.5rem,13vw,11rem)]">
-                WE MAKE
-                <br />
-                <span className="outline-type">BRANDS</span>
-                <br />
-                GO <span className="inline-block bg-shock px-3 leading-[0.8] text-background">FERAL</span>
+              <h1 className="headline-stack font-poster text-[clamp(3.5rem,13vw,11rem)]">
+                <span className="reveal block">WE MAKE</span>
+                <span className="reveal outline-type block glitch-hover">BRANDS</span>
+                <span className="reveal block">
+                  GO{" "}
+                  <span className="inline-block bg-shock px-3 leading-[0.85] text-background tilt-hover">
+                    FERAL
+                  </span>
+                </span>
               </h1>
+
               <p className="mt-6 max-w-lg font-body text-lg leading-snug">
                 A concept-art studio for companies who realised the algorithm doesn't read your
                 brand guidelines. We build the campaign, draw the world, and cut the edit.
@@ -314,11 +318,11 @@ function Index() {
           className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-acid/30 blur-3xl"
         />
         <div className="relative mx-auto max-w-[1500px]">
-          <h2 className="font-poster text-[clamp(3rem,11vw,9rem)] text-background">
-            got a brief?
-            <br />
-            <span className="text-acid">post it to us</span>
+          <h2 className="headline-stack font-poster text-[clamp(3rem,11vw,9rem)] text-background">
+            <span className="reveal block">got a brief?</span>
+            <span className="reveal block text-acid glitch-hover">post it to us</span>
           </h2>
+
 
           <div className="mt-12 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
