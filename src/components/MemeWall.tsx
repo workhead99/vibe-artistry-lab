@@ -21,7 +21,7 @@ export function MemeWall() {
     <section id="memes" className="overflow-hidden border-b-2 border-ink px-5 py-16">
       <div className="mx-auto max-w-[1500px]">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="text-[clamp(2.5rem,7vw,6rem)]">Meme material</h2>
+          <h2 className="reveal text-[clamp(2.5rem,7vw,6rem)]">Meme material</h2>
           <p className="font-mono text-xs uppercase text-muted-foreground">
             harvested from real slack threads
           </p>
@@ -31,7 +31,7 @@ export function MemeWall() {
           {memes.map((m, i) => (
             <article
               key={m.bottom}
-              className={`glass-chip hard-shadow border-2 border-ink p-6 ${
+              className={`reveal tilt-hover glass-chip hard-shadow border-2 border-ink p-6 ${
                 i % 3 === 1 ? "lg:mt-8" : ""
               }`}
             >

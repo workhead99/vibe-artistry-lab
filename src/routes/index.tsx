@@ -8,6 +8,8 @@ import { ContactForm } from "@/components/ContactForm";
 import { MemeWall } from "@/components/MemeWall";
 import { AuraCalculator } from "@/components/AuraCalculator";
 import { useParallax } from "@/hooks/use-parallax";
+import { useReveal } from "@/hooks/use-reveal";
+
 
 
 export const Route = createFileRoute("/")({
@@ -86,9 +88,12 @@ function Index() {
     useParallax<HTMLDivElement>(0.09),
   ];
   const contactBlobRef = useParallax<HTMLDivElement>(0.25);
+  const auraBlobRef = useParallax<HTMLDivElement>(0.18);
+  const pageRef = useReveal<HTMLDivElement>();
 
   return (
-    <div className="min-h-screen bg-background text-foreground grain-overlay">
+    <div ref={pageRef} className="min-h-screen bg-background text-foreground grain-overlay">
+
       <header className="glass-panel sticky top-0 z-50 border-b-2 border-ink">
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-3">
           <span className="font-poster text-2xl tracking-tight">FEEDWALKERS™</span>
@@ -126,13 +131,17 @@ function Index() {
           </p>
           <div className="mt-4 grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
             <div>
-              <h1 className="font-poster text-[clamp(3.5rem,13vw,11rem)]">
-                WE MAKE
-                <br />
-                <span className="outline-type">BRANDS</span>
-                <br />
-                GO <span className="inline-block bg-shock px-3 leading-[0.8] text-background">FERAL</span>
+              <h1 className="headline-stack font-poster text-[clamp(3.5rem,13vw,11rem)]">
+                <span className="reveal block">WE MAKE</span>
+                <span className="reveal outline-type block glitch-hover">BRANDS</span>
+                <span className="reveal block">
+                  GO{" "}
+                  <span className="inline-block bg-shock px-3 leading-[0.85] text-background tilt-hover">
+                    FERAL
+                  </span>
+                </span>
               </h1>
+
               <p className="mt-6 max-w-lg font-body text-lg leading-snug">
                 A concept-art studio for companies who realised the algorithm doesn't read your
                 brand guidelines. We build the campaign, draw the world, and cut the edit.
@@ -152,7 +161,7 @@ function Index() {
                 </a>
               </div>
             </div>
-            <figure className="relative">
+            <figure className="reveal relative float-slow">
               <img
                 ref={heroRef}
                 src={heroCollage}
@@ -165,6 +174,7 @@ function Index() {
                 fig. 01 — internal moodboard, leaked on purpose
               </figcaption>
             </figure>
+
           </div>
         </div>
       </section>
@@ -184,13 +194,14 @@ function Index() {
 
       <section id="services" className="border-b-2 border-ink px-5 py-16">
         <div className="mx-auto max-w-[1500px]">
-          <h2 className="text-[clamp(2.5rem,7vw,6rem)]">Four things, done loudly</h2>
+          <h2 className="reveal text-[clamp(2.5rem,7vw,6rem)]">Four things, done loudly</h2>
           <div className="mt-10 grid gap-0 border-2 border-ink sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s, i) => (
               <article
                 key={s.n}
-                className={`glass-chip p-7 ${i < 3 ? "border-b-2 border-ink lg:border-b-0 lg:border-r-2" : ""} ${i === 0 ? "sm:border-r-2" : ""} ${i === 2 ? "sm:border-r-2" : ""}`}
+                className={`reveal glass-chip tilt-hover p-7 ${i < 3 ? "border-b-2 border-ink lg:border-b-0 lg:border-r-2" : ""} ${i === 0 ? "sm:border-r-2" : ""} ${i === 2 ? "sm:border-r-2" : ""}`}
               >
+
 
                 <span className="font-mono text-xs text-shock">{s.n}</span>
                 <h3 className="mt-3 text-5xl">{s.title}</h3>
@@ -214,13 +225,14 @@ function Index() {
       <section id="work" className="overflow-hidden border-b-2 border-ink px-5 py-16">
         <div className="mx-auto max-w-[1500px]">
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="text-[clamp(2.5rem,7vw,6rem)]">Selected chaos</h2>
+            <h2 className="reveal text-[clamp(2.5rem,7vw,6rem)]">Selected chaos</h2>
             <p className="font-mono text-xs uppercase text-muted-foreground">2024 — 2026</p>
           </div>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {work.map((w, i) => (
               <div key={w.title} ref={workRefs[i]} className="will-change-transform">
-                <article className={i === 1 ? "md:mt-16" : ""}>
+                <article className={`reveal tilt-hover ${i === 1 ? "md:mt-16" : ""}`}>
+
                   <img
                     src={w.img}
                     alt={`${w.title} concept art for ${w.client}`}
@@ -310,15 +322,17 @@ function Index() {
           className="pointer-events-none absolute -left-24 top-10 h-96 w-96 rounded-full bg-shock/40 blur-3xl will-change-transform"
         />
         <div
+          ref={auraBlobRef}
           aria-hidden
-          className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-acid/30 blur-3xl"
+          className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-acid/30 blur-3xl will-change-transform"
+
         />
         <div className="relative mx-auto max-w-[1500px]">
-          <h2 className="font-poster text-[clamp(3rem,11vw,9rem)] text-background">
-            got a brief?
-            <br />
-            <span className="text-acid">post it to us</span>
+          <h2 className="headline-stack font-poster text-[clamp(3rem,11vw,9rem)] text-background">
+            <span className="reveal block">got a brief?</span>
+            <span className="reveal block text-acid glitch-hover">post it to us</span>
           </h2>
+
 
           <div className="mt-12 grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div>

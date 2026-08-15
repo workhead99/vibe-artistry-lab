@@ -68,7 +68,7 @@ export function AuraCalculator() {
   const pct = Math.max(0, Math.min(100, ((score + 1500) / 5400) * 100));
 
   return (
-    <div className="glass-panel hard-shadow border-2 border-ink p-6 md:p-9">
+    <div className="reveal glass-panel hard-shadow border-2 border-ink p-6 md:p-9">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <h3 className="text-4xl md:text-5xl">Aura points calculator</h3>
         <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">

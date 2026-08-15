@@ -71,7 +71,7 @@ export function ContactForm() {
     <form
       onSubmit={onSubmit}
       noValidate
-      className="glass-panel hard-shadow border-2 border-ink p-6 md:p-9"
+      className="reveal glass-panel hard-shadow border-2 border-ink p-6 md:p-9"
     >
       <div className="grid gap-5 md:grid-cols-2">
         <div>
