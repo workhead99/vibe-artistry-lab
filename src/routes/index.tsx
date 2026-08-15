@@ -174,13 +174,14 @@ function Index() {
 
       <section id="services" className="border-b-2 border-ink px-5 py-16">
         <div className="mx-auto max-w-[1500px]">
-          <h2 className="text-[clamp(2.5rem,7vw,6rem)]">Three things, done loudly</h2>
-          <div className="mt-10 grid gap-0 border-2 border-ink md:grid-cols-3">
+          <h2 className="text-[clamp(2.5rem,7vw,6rem)]">Four things, done loudly</h2>
+          <div className="mt-10 grid gap-0 border-2 border-ink sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s, i) => (
               <article
                 key={s.n}
-                className={`glass-chip p-7 ${i < 2 ? "border-b-2 border-ink md:border-b-0 md:border-r-2" : ""}`}
+                className={`glass-chip p-7 ${i < 3 ? "border-b-2 border-ink lg:border-b-0 lg:border-r-2" : ""} ${i === 0 ? "sm:border-r-2" : ""} ${i === 2 ? "sm:border-r-2" : ""}`}
               >
+
                 <span className="font-mono text-xs text-shock">{s.n}</span>
                 <h3 className="mt-3 text-5xl">{s.title}</h3>
                 <p className="mt-4 text-base leading-snug text-muted-foreground">{s.body}</p>
