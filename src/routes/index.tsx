@@ -225,13 +225,14 @@ function Index() {
       <section id="work" className="overflow-hidden border-b-2 border-ink px-5 py-16">
         <div className="mx-auto max-w-[1500px]">
           <div className="flex flex-wrap items-end justify-between gap-4">
-            <h2 className="text-[clamp(2.5rem,7vw,6rem)]">Selected chaos</h2>
+            <h2 className="reveal text-[clamp(2.5rem,7vw,6rem)]">Selected chaos</h2>
             <p className="font-mono text-xs uppercase text-muted-foreground">2024 — 2026</p>
           </div>
           <div className="mt-10 grid gap-8 md:grid-cols-3">
             {work.map((w, i) => (
               <div key={w.title} ref={workRefs[i]} className="will-change-transform">
-                <article className={i === 1 ? "md:mt-16" : ""}>
+                <article className={`reveal tilt-hover ${i === 1 ? "md:mt-16" : ""}`}>
+
                   <img
                     src={w.img}
                     alt={`${w.title} concept art for ${w.client}`}
@@ -321,8 +322,10 @@ function Index() {
           className="pointer-events-none absolute -left-24 top-10 h-96 w-96 rounded-full bg-shock/40 blur-3xl will-change-transform"
         />
         <div
+          ref={auraBlobRef}
           aria-hidden
-          className="pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-acid/30 blur-3xl"
+          className="drift-x pointer-events-none absolute -right-20 bottom-0 h-80 w-80 rounded-full bg-acid/30 blur-3xl will-change-transform"
+
         />
         <div className="relative mx-auto max-w-[1500px]">
           <h2 className="headline-stack font-poster text-[clamp(3rem,11vw,9rem)] text-background">
