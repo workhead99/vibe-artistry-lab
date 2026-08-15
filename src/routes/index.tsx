@@ -96,6 +96,13 @@ function Index() {
             <a href="#work" className="hover:text-shock">
               work
             </a>
+            <a href="#memes" className="hover:text-shock">
+              memes
+            </a>
+            <a href="#aura" className="hover:text-shock">
+              aura
+            </a>
+
             <a href="#services" className="hover:text-shock">
               services
             </a>
