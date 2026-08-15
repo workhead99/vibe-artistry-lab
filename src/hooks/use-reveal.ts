@@ -22,7 +22,7 @@ export function useReveal<T extends HTMLElement>(rootMargin = "0px 0px -10% 0px"
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting || e.boundingClientRect.top < 0) {
+          if (e.isIntersecting || e.boundingClientRect.top < window.innerHeight) {
             e.target.classList.add("is-visible");
             io.unobserve(e.target);
           }
