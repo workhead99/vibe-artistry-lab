@@ -193,6 +193,68 @@
   -webkit-text-stroke: 2px var(--ink);
 }
 
+/* --- motion --- */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.985);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  &.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@utility float-slow {
+  animation: float-y 7s ease-in-out infinite;
+}
+
+@keyframes float-y {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(-0.6deg); }
+}
+
+@utility drift-x {
+  animation: drift-x 9s ease-in-out infinite;
+}
+
+@keyframes drift-x {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(18px); }
+}
+
+@utility glitch-hover {
+  transition: transform 0.25s ease, text-shadow 0.25s ease;
+  &:hover {
+    transform: translate(-2px, -2px);
+    text-shadow:
+      3px 0 0 var(--shock),
+      -3px 0 0 var(--acid);
+  }
+}
+
+@utility tilt-hover {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+  &:hover {
+    transform: translateY(-6px) rotate(-0.7deg);
+  }
+}
+
+@utility headline-stack {
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  & > * + * {
+    margin-top: 0.16em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .float-slow, .drift-x, .marquee-track { animation: none; }
+}
+
+
 @utility grain-overlay {
   position: relative;
   &::after {
