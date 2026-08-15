@@ -86,9 +86,12 @@ function Index() {
     useParallax<HTMLDivElement>(0.09),
   ];
   const contactBlobRef = useParallax<HTMLDivElement>(0.25);
+  const auraBlobRef = useParallax<HTMLDivElement>(0.18);
+  const pageRef = useReveal<HTMLDivElement>();
 
   return (
-    <div className="min-h-screen bg-background text-foreground grain-overlay">
+    <div ref={pageRef} className="min-h-screen bg-background text-foreground grain-overlay">
+
       <header className="glass-panel sticky top-0 z-50 border-b-2 border-ink">
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-5 py-3">
           <span className="font-poster text-2xl tracking-tight">FEEDWALKERS™</span>
