@@ -1,6 +1,9 @@
 import { useRef, useState } from "react";
 import { z } from "zod";
 import { toast } from "sonner";
+import { useServerFn } from "@tanstack/react-start";
+import { submitBrief } from "@/lib/contact.functions";
+
 
 const schema = z.object({
   name: z.string().trim().min(2, "Tell us your name").max(100),
@@ -32,13 +35,25 @@ const servicesList = ["Signal Ops", "World-Building", "Frame Surgery", "Meme R&D
 const fieldClass =
   "w-full border-2 border-ink bg-background/60 px-4 py-3 font-mono text-sm text-foreground backdrop-blur-md outline-none placeholder:text-muted-foreground focus:border-shock focus:bg-background/80";
 
+const MAX_FILE_BYTES = 8 * 1024 * 1024;
+
+async function fileToBase64(file: File) {
+  const buffer = new Uint8Array(await file.arrayBuffer());
+  let binary = "";
+  for (let i = 0; i < buffer.length; i += 8192) {
+    binary += String.fromCharCode(...buffer.subarray(i, i + 8192));
+  }
+  return btoa(binary);
+}
+
 export function ContactForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [fileName, setFileName] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+  const send = useServerFn(submitBrief);
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const form = e.currentTarget;
     const data = Object.fromEntries(new FormData(form).entries());
@@ -52,15 +67,34 @@ export function ContactForm() {
       return;
     }
 
+    const file = fileRef.current?.files?.[0] ?? null;
+    if (file && file.size > MAX_FILE_BYTES) {
+      toast.error("File is too chunky — keep it under 8MB");
+      return;
+    }
+
     setErrors({});
     setSending(true);
-    setTimeout(() => {
-      setSending(false);
+    try {
+      await send({
+        data: {
+          ...parsed.data,
+          file: file
+            ? { name: file.name, type: file.type, dataBase64: await fileToBase64(file) }
+            : null,
+        },
+      });
       form.reset();
       setFileName(null);
       toast.success("Brief received — we'll reply within 24h");
-    }, 700);
+    } catch (err) {
+      console.error(err);
+      toast.error("Something broke on our end. Try again or mail us directly.");
+    } finally {
+      setSending(false);
+    }
   }
+
 
   const Err = ({ k }: { k: string }) =>
     errors[k] ? (
