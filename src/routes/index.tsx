@@ -134,12 +134,13 @@ function Index() {
               <h1 className="headline-stack font-poster text-[clamp(3.5rem,13vw,11rem)]">
                 <span className="reveal block">WE MAKE</span>
                 <span className="reveal outline-type block glitch-hover">BRANDS</span>
-                <span className="reveal block">
-                  GO{" "}
-                  <span className="inline-block bg-shock px-3 leading-[0.85] text-background tilt-hover">
+                <span className="reveal flex flex-wrap items-baseline gap-x-[0.18em]">
+                  <span>GO</span>
+                  <span className="inline-block bg-shock px-[0.12em] pb-[0.06em] text-background tilt-hover">
                     FERAL
                   </span>
                 </span>
+
               </h1>
 
               <p className="mt-6 max-w-lg font-body text-lg leading-snug">
@@ -161,7 +162,7 @@ function Index() {
                 </a>
               </div>
             </div>
-            <figure className="reveal relative float-slow">
+            <figure className="reveal relative float-slow mt-16 lg:mt-0">
               <img
                 ref={heroRef}
                 src={heroCollage}
