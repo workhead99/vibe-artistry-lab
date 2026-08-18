@@ -162,7 +162,7 @@ function Index() {
                 </a>
               </div>
             </div>
-            <figure className="reveal relative float-slow">
+            <figure className="reveal relative float-slow mt-8 lg:mt-0">
               <img
                 ref={heroRef}
                 src={heroCollage}
