@@ -78,14 +78,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "FEEDWALKERS — Concept Art, Marketing & Editing Studio" },
+      {
+        name: "description",
+        content:
+          "FEEDWALKERS is a concept-art marketing, design and editing agency building meme-fluent campaigns for brands that want Gen Z to actually care.",
+      },
+      { name: "author", content: "FEEDWALKERS Studio" },
+      { property: "og:title", content: "FEEDWALKERS — Concept Art & Meme-Fluent Marketing" },
+      {
+        property: "og:description",
+        content:
+          "Campaigns, design and edits built for the feed. Concept art energy, meme literacy, zero cringe.",
+      },
+      { property: "og:site_name", content: "FEEDWALKERS" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
