@@ -28,8 +28,12 @@ export const Route = createFileRoute("/")({
           "Campaigns, design and edits built for the feed. Concept art energy, meme literacy, zero cringe.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://vibe-artistry-lab.lovable.app/" },
+      { property: "og:image", content: "https://vibe-artistry-lab.lovable.app/og-image.jpg" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://vibe-artistry-lab.lovable.app/og-image.jpg" },
     ],
+    links: [{ rel: "canonical", href: "https://vibe-artistry-lab.lovable.app/" }],
   }),
   component: Index,
 });
